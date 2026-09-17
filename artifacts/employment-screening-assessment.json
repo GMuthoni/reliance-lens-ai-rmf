@@ -1,0 +1,140 @@
+{
+  "artifact_name": "Reliance Lens Employment Screening Assessment",
+  "artifact_version": "0.1",
+  "status": "analytical_prototype",
+  "claims": {
+    "demonstrates_application": true,
+    "claims_validation": false,
+    "claims_effectiveness": false,
+    "claims_superiority": false,
+    "claims_nist_approval": false
+  },
+  "system": {
+    "domain": "employment",
+    "function": "application_ranking",
+    "formal_decision_maker": "recruiter_or_hiring_organization",
+    "practical_consequence": "determines_which_applications_receive_attention_first"
+  },
+  "reliance_pathway": [
+    "signal",
+    "interpretation",
+    "authority",
+    "oversight",
+    "intervention",
+    "recovery",
+    "learning"
+  ],
+  "safeguards": [
+    {
+      "id": "S1",
+      "name": "applicant_data_validation",
+      "function": "detect_incomplete_or_inaccurate_records",
+      "dependencies": ["applicant_data", "validation_rules", "responsible_staff"]
+    },
+    {
+      "id": "S2",
+      "name": "ranking_monitoring",
+      "function": "detect_unusual_ranking_behavior",
+      "dependencies": ["monitoring_system", "baseline_data", "analyst_capacity"]
+    },
+    {
+      "id": "S3",
+      "name": "recruiter_review",
+      "function": "challenge_or_reject_ranking_outputs",
+      "dependencies": ["recruiter_capacity", "candidate_records"]
+    },
+    {
+      "id": "S4",
+      "name": "manual_review_fallback",
+      "function": "continue_assessment_without_ranking",
+      "dependencies": ["recruiter_capacity", "candidate_records", "review_procedure"]
+    },
+    {
+      "id": "S5",
+      "name": "candidate_correction_process",
+      "function": "correct_inaccurate_applicant_information",
+      "dependencies": ["communication_channel", "candidate_records", "responsible_staff"]
+    },
+    {
+      "id": "S6",
+      "name": "ranking_suspension",
+      "function": "stop_ranking_when_review_is_not_meaningful",
+      "dependencies": ["capacity_signal", "authorized_decision_maker", "technical_switch"]
+    }
+  ],
+  "shared_dependencies": [
+    {
+      "dependency": "recruiter_capacity",
+      "supports": ["S3", "S4", "S6"],
+      "potential_failure": "oversight_fallback_and_intervention_degrade_together"
+    },
+    {
+      "dependency": "candidate_records",
+      "supports": ["S3", "S4", "S5"],
+      "potential_failure": "review_fallback_and_correction_degrade_together"
+    }
+  ],
+  "scenario": {
+    "name": "loss_of_meaningful_human_review",
+    "trigger": "recruiter_review_capacity_falls_below_required_minimum",
+    "ranking_remains_technically_available": true,
+    "incident_status": "analytical_fixture_not_documented_incident"
+  },
+  "candidate_measures": [
+    {
+      "construct": "dependency_concentration",
+      "definition": "proportion_of_safeguards_sharing_a_material_dependency",
+      "status": "candidate_measure_not_validated"
+    },
+    {
+      "construct": "detection_latency",
+      "definition": "time_from_dependency_degradation_to_recognition_of_control_failure",
+      "status": "candidate_measure_not_validated"
+    },
+    {
+      "construct": "intervention_latency",
+      "definition": "time_from_recognition_to_effective_restriction_or_intervention",
+      "status": "candidate_measure_not_validated"
+    },
+    {
+      "construct": "control_persistence",
+      "definition": "proportion_of_assessed_safeguards_remaining_effective_after_perturbation",
+      "status": "candidate_measure_not_validated"
+    },
+    {
+      "construct": "recovery_time",
+      "definition": "time_to_restore_defined_minimum_operating_condition",
+      "status": "candidate_measure_not_validated"
+    },
+    {
+      "construct": "residual_authority",
+      "definition": "degree_of_consequential_system_authority_retained_while_oversight_is_degraded",
+      "status": "candidate_measure_not_validated"
+    }
+  ],
+  "finding": {
+    "title": "Control coupling may create common-mode failure",
+    "summary": "When recruiter capacity is materially degraded, human review, manual fallback, candidate correction, and ranking suspension may become unavailable or less effective while ranking continues.",
+    "authority_effect": "ranking may acquire practical authority without formal decision-making authority",
+    "confidence": "analytical_inference"
+  },
+  "operational_test": {
+    "name": "loss_of_meaningful_human_review",
+    "pass_condition": "ranking cannot continue as an effective gatekeeper unless meaningful review, intervention authority, and usable recovery remain available",
+    "observe": [
+      "degradation_detection",
+      "ranking_pause_or_restriction",
+      "authorized_notification",
+      "independent_review_path",
+      "candidate_correction",
+      "event_logging",
+      "recovery_and_explanation"
+    ]
+  },
+  "nist_ai_rmf_mapping": {
+    "GOVERN": ["assign_dependency_owners", "define_intervention_authority", "record_oversight_failure"],
+    "MAP": ["map_workflow_dependencies", "map_formal_and_practical_authority", "identify_affected_people"],
+    "MEASURE": ["test_review_capacity_threshold", "test_fallback_independence", "test_correction_availability"],
+    "MANAGE": ["restrict_or_suspend_ranking", "create_independent_recovery_path", "strengthen_shared_dependencies"]
+  }
+}
