@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: "Reliance Lens × NIST AI RMF: Testing Safeguard Independence Under Degraded Conditions"
+message: "If you use this artifact, please cite the repository."
+type: software
+authors:
+  - name: "Nieleze"
+version: 0.1.0
+date-released: 2026-09-17
+license: Apache-2.0
+repository-code: "https://github.com/Nieleze/reliance-lens-ai-rmf"
+abstract: >-
+  A worked analytical application of Reliance Lens to the NIST AI Risk
+  Management Framework. The artifact examines shared dependencies, control
+  coupling, practical authority, human oversight, and recovery under degraded
+  operating conditions, with candidate measurement constructs for future
+  empirical validation.
+keywords:
+  - AI risk management
+  - NIST AI RMF
+  - AI assurance
+  - TEVV
+  - human oversight
+  - control coupling
+  - operational resilience
+  - structural dependence
