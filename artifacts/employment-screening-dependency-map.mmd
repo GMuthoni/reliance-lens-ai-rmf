@@ -1,0 +1,19 @@
+flowchart TD
+    A[Applicant data] --> B[Ranking model]
+    A --> C[Recruiter review]
+    A --> D[Candidate correction]
+    B --> C
+    C --> E[Hiring decision]
+    F[Recruiter capacity] --> C
+    F --> G[Manual review fallback]
+    F --> H[Ranking suspension decision]
+    I[Candidate-record system] --> C
+    I --> D
+    I --> G
+    J[Monitoring] --> H
+    K[Authorized manager] --> H
+    F -. shared dependency .-> C
+    F -. shared dependency .-> G
+    I -. shared dependency .-> C
+    I -. shared dependency .-> D
+    I -. shared dependency .-> G
