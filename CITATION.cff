@@ -7,7 +7,7 @@ authors:
 version: 0.1.0
 date-released: 2026-09-17
 license: Apache-2.0
-repository-code: "https://github.com/Nieleze/reliance-lens-ai-rmf"
+repository-code: "https://github.com/GMuthoni/reliance-lens-ai-rmf"
 abstract: >-
   A worked analytical application of Reliance Lens to the NIST AI Risk
   Management Framework. The artifact examines shared dependencies, control
