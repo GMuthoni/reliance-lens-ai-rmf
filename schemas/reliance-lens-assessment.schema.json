@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reliance Lens Assessment",
+  "type": "object",
+  "required": ["artifact_name", "artifact_version", "status", "system", "safeguards", "scenario", "finding"],
+  "properties": {
+    "artifact_name": {"type": "string"},
+    "artifact_version": {"type": "string"},
+    "status": {
+      "type": "string",
+      "enum": ["analytical_prototype", "worked_application", "pilot_assessment"]
+    },
+    "system": {
+      "type": "object",
+      "required": ["domain", "function"],
+      "properties": {
+        "domain": {"type": "string"},
+        "function": {"type": "string"},
+        "formal_decision_maker": {"type": "string"},
+        "practical_consequence": {"type": "string"}
+      }
+    },
+    "safeguards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "function", "dependencies"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "function": {"type": "string"},
+          "dependencies": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "required": ["name", "trigger"],
+      "properties": {
+        "name": {"type": "string"},
+        "trigger": {"type": "string"},
+        "incident_status": {"type": "string"}
+      }
+    },
+    "candidate_measures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["construct", "definition", "status"],
+        "properties": {
+          "construct": {"type": "string"},
+          "definition": {"type": "string"},
+          "status": {"type": "string"}
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["title", "summary"],
+      "properties": {
+        "title": {"type": "string"},
+        "summary": {"type": "string"},
+        "authority_effect": {"type": "string"},
+        "confidence": {"type": "string"}
+      }
+    }
+  }
+}
